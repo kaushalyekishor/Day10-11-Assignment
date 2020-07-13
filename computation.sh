@@ -26,3 +26,33 @@ echo "Array: "${Array[@]}
 
 sortedArray=$(printf '%s\n' "${Array[@]}" | sort -n)
 echo "Sorted Array: "$sortedArray
+
+
+
+
+##Flip Coin Simulator Code added
+#!/bin/bash -x
+headCounter=0
+tailCounter=0
+while [ 1 -eq 1 ]
+do
+        randomGenerator=$((RANDOM%2))
+        if [ $randomGenerator -eq 0 ]
+        then
+                ((headCounter++))
+                if [[ $headCounter -eq 21 ]]
+                then
+                        echo "Head came" $headCounter
+               		#echo "Head: "$headCounter
+			exit
+		 fi
+        else
+                ((tailCounter++))
+                if [[ $tailCounter -eq 21 ]]
+                then
+                        echo "Tail came" $tailCounter
+			#echo "Tail: "$tailCounter
+			exit
+		fi
+        fi
+done
