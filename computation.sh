@@ -84,3 +84,42 @@ echo "Tails: "${singlet["Tails"]}
 echo "Heads Pertcentage: " $((${singlet["Heads"]}*100/50))"%";
 echo "Tails Percentage: " $((${singlet["Tails"]}*100/50))"%";
 
+
+
+
+##Doublet Flip coin code added 
+#!/bin/bash -x
+
+declare -A doublet
+
+for (( i=0; i<150; i++))
+do
+	randomGenerator=$((RANDOM%4))
+	if [ $randomGenerator -eq 0 ]
+	then
+		doublet["HH"]=$(($HH))
+		((HH++))
+	elif [ $randomGenerator -eq 1 ]
+	then
+		doublet["HT"]=$(($HT))
+		((HT++))
+	elif [ $randomGenerator -eq 2 ]
+        then
+	        doublet["TH"]=$(($TH))
+                ((TH++))
+	else
+                doublet["TT"]=$(($TT))
+                ((TT++))
+
+	fi
+done
+
+echo "HH: "${doublet["HH"]}
+echo "HT: "${doublet["HT"]}
+echo "TH: "${doublet["TH"]}
+echo "TT: "${doublet["TT"]}
+
+echo "HH Pertcentage: " $((${doublet["HH"]}*100/150))"%";
+echo "HT Percentage: " $((${doublet["HT"]}*100/150))"%";
+echo "TH Pertcentage: " $((${doublet["TH"]}*100/150))"%";
+echo "TT Percentage: " $((${doublet["TT"]}*100/150))"%";
