@@ -56,3 +56,31 @@ do
 		fi
         fi
 done
+
+
+
+
+## Singlet FlipCoin code Added
+#!/bin/bash -x
+
+declare -A singlet
+
+for (( i=0; i<50; i++ ))
+do
+	randomGenerator=$((RANDOM%2))
+	if [ $randomGenerator -eq 0 ]
+	then
+		singlet["Heads"]=$(($head))
+		((head++))
+	else
+		singlet["Tails"]=$(($tail))
+		((tail++))
+	fi
+done
+
+echo "Heads: "${singlet["Heads"]}
+echo "Tails: "${singlet["Tails"]}
+
+echo "Heads Pertcentage: " $((${singlet["Heads"]}*100/50))"%";
+echo "Tails Percentage: " $((${singlet["Tails"]}*100/50))"%";
+
