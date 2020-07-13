@@ -123,3 +123,71 @@ echo "HH Pertcentage: " $((${doublet["HH"]}*100/150))"%";
 echo "HT Percentage: " $((${doublet["HT"]}*100/150))"%";
 echo "TH Pertcentage: " $((${doublet["TH"]}*100/150))"%";
 echo "TT Percentage: " $((${doublet["TT"]}*100/150))"%";
+
+
+
+
+##Triplet Flip Coin code Added
+#!/bin/bash -x
+
+declare -A triplet
+
+for (( i=0; i<150; i++ ))
+do
+	randomGenerator=$((RANDOM%8))
+
+	if [ $randomGenerator -eq 0 ]
+	then
+		triplet["HHH"]=$(($HHH))
+		((HHH++))
+	elif [ $randomGenerator -eq 1 ]
+	then
+		triplet["HHT"]=$(($HHT))
+		((HHT++))
+	elif [ $randomGenerator -eq 2 ]
+        then
+	        triplet["HTH"]=$(($HTH))
+                ((HTH++))
+        elif [ $randomGenerator -eq 3 ]
+        then
+                triplet["THH"]=$(($THH))
+                ((THH++))
+
+        elif [ $randomGenerator -eq 4 ]
+        then
+                triplet["TTH"]=$(($TTH))
+                ((TTH++))
+        elif [ $randomGenerator -eq 5 ]
+        then
+                triplet["THT"]=$(($THT))
+                ((THT++))
+        elif [ $randomGenerator -eq 6 ]
+        then
+                triplet["HTT"]=$(($HTT))
+                ((HTT++))
+
+	else
+                triplet["TTT"]=$(($TTT))
+                ((TTT++))
+
+	fi
+done
+
+echo "HHH: "${triplet["HHH"]}
+echo "HHT: "${triplet["HHT"]}
+echo "HTH: "${triplet["HTH"]}
+echo "THH: "${triplet["THH"]}
+echo "TTH: "${triplet["TTH"]}
+echo "THT: "${triplet["THT"]}
+echo "HTT: "${triplet["HTT"]}
+echo "TTT: "${triplet["TTT"]}
+
+
+echo "HHH Pertcentage: " $((${triplet["HHH"]}*100/150))"%";
+echo "HHT Percentage: " $((${triplet["HHT"]}*100/150))"%";
+echo "HTH Pertcentage: " $((${triplet["HTH"]}*100/150))"%";
+echo "THH Percentage: " $((${triplet["THH"]}*100/150))"%";
+echo "TTH Pertcentage: " $((${triplet["TTH"]}*100/150))"%";
+echo "THT Percentage: " $((${triplet["THT"]}*100/150))"%";
+echo "HTT Pertcentage: " $((${triplet["HTT"]}*100/150))"%";
+echo "TTT Percentage: " $((${triplet["TTT"]}*100/150))"%";
